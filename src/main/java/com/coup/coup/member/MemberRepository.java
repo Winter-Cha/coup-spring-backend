@@ -1,9 +1,12 @@
-package com.coup.coup;
+package com.coup.coup.member;
 
 import jakarta.persistence.EntityManager;
-import jakarta.persistence.Id;
 import jakarta.persistence.PersistenceContext;
+import org.junit.Test;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
+
 
 @Repository
 public class MemberRepository {
@@ -22,6 +25,12 @@ public class MemberRepository {
 
     public Member find(Long id) {
         return em.find(Member.class, id);
+    }
+
+    public List<Member> findByUserName(String userName) {
+        return em.createQuery("select m from Member m where m.username = :name", Member.class)
+                .setParameter("name", userName)
+                .getResultList();
     }
 
 }

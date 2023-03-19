@@ -1,20 +1,26 @@
-package com.coup.coup;
+package com.coup.coup.member;
 
+
+import jakarta.transaction.Transactional;
 import org.assertj.core.api.Assertions;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-import org.springframework.transaction.annotation.Transactional;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.fail;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class MemberRepositoryTest {
 
-    @Autowired MemberRepository memberRepository;
+    @Autowired
+    MemberRepository memberRepository;
+
+    @Autowired
+    MemberService memberService;
 
     @Test
     @Transactional
@@ -39,4 +45,22 @@ public class MemberRepositoryTest {
         * */
 
     }
+    @Test
+    @Transactional
+    public void memberDuplicateException(){
+        // given
+        Member member1 = new Member();
+        member1.setUsername("member");
+        Member member2 = new Member();
+        member2.setUsername("member");
+
+        // when
+        memberService.join(member1);
+
+        //then
+        IllegalStateException e = assertThrows(IllegalStateException.class, () -> memberService.join(member2));
+        Assertions.assertThat(e.getMessage()).isEqualTo("이미 존재하는 회원입니다.");
+
+    }
+
 }
