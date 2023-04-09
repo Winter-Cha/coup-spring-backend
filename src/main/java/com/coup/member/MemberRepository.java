@@ -1,8 +1,7 @@
-package com.coup.coup.member;
+package com.coup.member;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
-import org.junit.Test;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.coup.coup.member;
+package com.coup.member;
 
 public enum RoleType {
     USER, ADMIN

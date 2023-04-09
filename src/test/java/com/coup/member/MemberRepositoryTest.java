@@ -1,6 +1,9 @@
-package com.coup.coup.member;
+package com.coup.member;
 
 
+import com.coup.member.Member;
+import com.coup.member.MemberRepository;
+import com.coup.member.MemberService;
 import jakarta.transaction.Transactional;
 import org.assertj.core.api.Assertions;
 import org.junit.Test;

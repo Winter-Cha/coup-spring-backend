@@ -1,4 +1,4 @@
-package com.coup.coup.member;
+package com.coup.member;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
