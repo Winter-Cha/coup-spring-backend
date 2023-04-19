@@ -1,0 +1,20 @@
+spring:
+#  datasource:
+#    url: jdbc:h2:mem:test -> 메모리 모드로 동작 (H2 홈페이지 cheat sheet In-Memory)
+#    username: sa
+#    password:
+#    driver-class-name: org.h2.Driver
+#
+#  jpa:
+#    hibernate:
+#      ddl-auto: create
+#    properties:
+#      hibernate:
+#        #show_sql: true
+#        format_sql: true
+# 스프링에선 이거 전부 지워도 자동으로 메모리 DB로 동작하게 해준다.
+
+logging:
+  level:
+    org.hibernate.SQL: debug
+    org.hibernate.type: trace

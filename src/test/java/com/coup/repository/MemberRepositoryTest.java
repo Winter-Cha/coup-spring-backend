@@ -1,9 +1,8 @@
-package com.coup.member;
+package com.coup.repository;
 
 
-import com.coup.member.Member;
-import com.coup.member.MemberRepository;
-import com.coup.member.MemberService;
+import com.coup.domain.Member;
+import com.coup.service.MemberService;
 import jakarta.transaction.Transactional;
 import org.assertj.core.api.Assertions;
 import org.junit.Test;
@@ -35,7 +34,7 @@ public class MemberRepositoryTest {
 
         //when
         Long saveId = memberRepository.save(member);
-        Member findMember = memberRepository.find(saveId);
+        Member findMember = memberRepository.findOne(saveId);
 
         //then
         Assertions.assertThat(findMember.getId().equals(member.getId()));

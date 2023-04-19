@@ -1,6 +1,5 @@
-package com.coup.project;
+package com.coup.domain;
 
-import com.coup.member.Member;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
