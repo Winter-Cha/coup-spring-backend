@@ -10,7 +10,7 @@ import java.util.List;
 
 @RestController
 @Slf4j
-//@RequestMapping("/user")
+//@RequestMapping("/members")
 public class MemberController {
 
     private final MemberService memberService;
@@ -25,18 +25,18 @@ public class MemberController {
         return "test success";
     }
 
-    @GetMapping("/users")
+    @GetMapping("/members")
     public List<Member> retrieveAllUsers() {
         return memberService.findMembers();
     }
 
-    // GET /users/1 or /users/10 -> String
-    @GetMapping("/users/{id}")
+    // GET /members/1 or /members/10 -> String
+    @GetMapping("/members/{id}")
     public Member retrieveUser(@PathVariable Long id) {
         return memberService.findOne(id);
     }
 
-    @PostMapping("/users")
+    @PostMapping("/members")
     public Member createUser(@RequestBody Member member) {
         return memberService.createMember(member);
     }
