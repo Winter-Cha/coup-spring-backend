@@ -78,6 +78,7 @@ public class MemberApiController {
         member.setEmail(request.getEmail());
 
         Long id = memberService.join(member);
+
         return new CreateMemberResponse(id);
     }
     @Data
