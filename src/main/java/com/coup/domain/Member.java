@@ -9,7 +9,7 @@ import java.util.Date;
 
 @Entity
 @Getter @Setter
-public class Member {
+public class Member extends BaseEntity {
     @Id @GeneratedValue
     @Column(name = "USER_ID")
     private Long id;
@@ -40,13 +40,13 @@ public class Member {
 
     //private BigDecimal age;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "REG_DT")
-    private Date createdDate;
+    //@Temporal(TemporalType.TIMESTAMP)
+    //@Column(name = "REG_DT")
+    //private Date createdDate;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "CHG_DT")
-    private Date lastModifiedDate;
+    //@Temporal(TemporalType.TIMESTAMP)
+    //@Column(name = "CHG_DT")
+    //private Date lastModifiedDate;
 
     //@Lob
     //private String description;
