@@ -9,7 +9,7 @@ import java.util.List;
 
 //@Entity
 @Getter @Setter
-public class Project {
+public class Project extends BaseEntity {
 
     @Id
     @GeneratedValue
