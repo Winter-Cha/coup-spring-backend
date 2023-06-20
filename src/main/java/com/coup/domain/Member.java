@@ -29,13 +29,13 @@ public class Member extends BaseEntity {
 
     private String email;
 
-//    @ManyToOne
-//    @JoinColumn(name = "TEAM_ID")
-//    private Team team;
-//
-//    @ManyToOne
-//    @JoinColumn(name = "PROJECT_ID")
-//    private Project project;
+    @ManyToOne
+    @JoinColumn(name = "TEAM_ID")
+    private Team team;
+
+    @ManyToOne
+    @JoinColumn(name = "PROJECT_ID")
+    private Project project;
 
 
     //private BigDecimal age;

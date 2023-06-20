@@ -8,7 +8,7 @@ import lombok.Setter;
 import java.util.ArrayList;
 import java.util.List;
 
-//@Entity
+@Entity
 @Getter @Setter
 public class Team extends BaseEntity {
 
