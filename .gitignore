@@ -266,3 +266,6 @@ bin/
 
 ### VS Code ###
 .vscode/
+
+### h2 directory ###
+/h2/
