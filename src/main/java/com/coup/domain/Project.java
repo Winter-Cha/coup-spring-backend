@@ -20,8 +20,10 @@ public class Project extends BaseEntity {
     private List<Member> member = new ArrayList<>();
 
     @Column(name = "PROJECT_NM")
-    private String name;
+    private String projectname;
 
+    @Column(name = "PROJECT_NICK_NM")
+    private String projectnickname;
 
 
 
