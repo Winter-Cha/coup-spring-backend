@@ -1,5 +1,6 @@
 package com.coup.repository;
 
+import com.coup.domain.Member;
 import com.coup.domain.Project;
 import jakarta.persistence.EntityManager;
 import lombok.RequiredArgsConstructor;
@@ -13,12 +14,14 @@ import java.util.List;
 public class ProjectRepository {
     private final EntityManager em;
 
-    public void save(Project project) {
+    public Long save(Project project) {
         if (project.getId() == null) {
             em.persist(project);
         } else {
             em.merge(project);
         }
+
+        return project.getId();
     }
 
     public Project findOne(Long id) {
@@ -27,6 +30,12 @@ public class ProjectRepository {
 
     public List<Project> findAll(){
         return em.createQuery("select p from Project p", Project.class).getResultList();
+    }
+
+    public List<Project> findByProjectName(String projectName) {
+        return em.createQuery("select p from Project p where p.projectname = :name", Project.class)
+                .setParameter("name", projectName)
+                .getResultList();
     }
 
 }
