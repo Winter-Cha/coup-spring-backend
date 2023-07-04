@@ -14,20 +14,15 @@ public class Project extends BaseEntity {
     @Id
     @GeneratedValue
     @Column(name = "PROJECT_ID")
-    private Long Id;
+    private Long id;
 
     @OneToMany(mappedBy = "project")
-    private List<Member> member = new ArrayList<>();
+    private List<Project> project = new ArrayList<>();
 
     @Column(name = "PROJECT_NM")
     private String projectname;
 
     @Column(name = "PROJECT_NICK_NM")
     private String projectnickname;
-
-
-
-
-
 
 }

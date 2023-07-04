@@ -12,14 +12,11 @@ import java.util.List;
 @Repository
 @RequiredArgsConstructor
 public class ProjectRepository {
+
     private final EntityManager em;
 
     public Long save(Project project) {
-        if (project.getId() == null) {
-            em.persist(project);
-        } else {
-            em.merge(project);
-        }
+        em.persist(project);
 
         return project.getId();
     }

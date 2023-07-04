@@ -15,7 +15,7 @@ public class ProjectService {
     private final ProjectRepository projectRepository;
 
     /**
-    * 프로젝트 등록
+    * 프로젝트 등록 (projectId)
     * return Project.Id
     * */
     @Transactional
@@ -24,6 +24,18 @@ public class ProjectService {
         validateDuplicateProject(project);
         projectRepository.save(project);
         return project.getId();
+    }
+
+    /**
+     * 프로젝트 등록 (project info)
+     * return Project
+     * */
+    @Transactional
+    public Project createProject(Project project) {
+        validateDuplicateProject(project);
+        projectRepository.save(project);
+        Long projectId = project.getId();
+        return projectRepository.findOne(projectId);
     }
 
     /**
@@ -44,10 +56,16 @@ public class ProjectService {
     }
 
     /**
-     * id로 프로젝트 조회
+     * Id로 프로젝트 조회
      * */
     public Project findOne(Long projectId) { return projectRepository.findOne(projectId); }
 
-
-
+    /**
+     * 업데이트
+     * */
+    @Transactional
+    public void update(Long id, String projectname) {
+        Project project = projectRepository.findOne(id);
+        project.setProjectname(projectname);
+    }
 }

@@ -7,10 +7,7 @@ import jakarta.validation.constraints.NotEmpty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -45,8 +42,30 @@ public class ProjectApiController {
         private String projectnickname;
     }
 
+    @PutMapping
+    public UpdateProjectResponse updateProjectV2(
+            @PathVariable("id") Long id,
+            @RequestBody @Valid UpdateProjectRequest request) {
+
+        projectService.update(id, request.getProjectname());
+        Project findProject = projectService.findOne(id);
+        return new UpdateProjectResponse(findProject.getId(), findProject.getProjectname());
+    }
+
+    @Data
+    static class UpdateProjectRequest {
+        private String projectname;
+    }
+
+    @Data
+    @AllArgsConstructor
+    static class UpdateProjectResponse {
+        private Long id;
+        private String projectname;
+    }
+
     //  /api/v2/project
-    @PostMapping("/api/members")
+    @PostMapping("/api/projects")
     public CreateProjectResponse saveProjectV2(@RequestBody @Valid CreateProjectRequest request) {
         Project project = new Project();
         project.setProjectname(request.getProjectname());
