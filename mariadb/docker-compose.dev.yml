@@ -1,0 +1,20 @@
+version: '1'
+services:
+  coupmariadb:
+    container_name: Co-up-MariaDB
+    restart: always
+    build: 
+      context: .
+      dockerfile: ./dockerFile/MariaDB_Dockerfile
+      args: 
+        buildno: 1.0
+    ports :
+      - "37099:3306"
+    volumes:
+      # docker-entrypoint-initdb.d 폴더에 있는 sql 파일을 자동으로 실행시킨다. 
+      # 그래서 ./config/ 폴더에 sql 파일을 넣어두면 컨테이너가 실행될 때 자동으로 실행된다.
+      - ./config/:/docker-entrypoint-initdb.d
+    command: 
+      --character-set-server=utf8mb4 
+      --collation-server=utf8mb4_unicode_ci
+      --default-time-zone='+9:00'

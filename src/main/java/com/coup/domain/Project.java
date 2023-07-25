@@ -16,9 +16,6 @@ public class Project extends BaseEntity {
     @Column(name = "PROJECT_ID")
     private Long id;
 
-    @OneToMany(mappedBy = "project")
-    private List<Project> project = new ArrayList<>();
-
     @Column(name = "PROJECT_NM")
     private String projectname;
 

@@ -1,0 +1,43 @@
+FROM mariadb
+
+ENV MYSQL_ROOT_PASSWORD couproot123
+
+WORKDIR /etc/mysql
+
+# my.cnf 세팅
+# 테이블 명 case 설정 (0:대문자, 1:소문자)
+# RUN echo lower_case_table_names=1 >> /etc/mysql/conf.d/docker.cnf
+# 타임존 설정
+# RUN echo default-time-zone='+9:00' >> /etc/mysql/conf.d/docker.cnf
+
+# 대조시 사용할 케릭터 셋 설정
+# RUN echo collation-server = utf8mb4_unicode_ci >> /etc/mysql/conf.d/docker.cnf
+
+# 케릭터 셋 설정
+# RUN echo character-set-server = utf8mb4 >> /etc/mysql/conf.d/docker.cnf
+
+# 클라이언트에서 케릭터 셋 설정하지 않고 서버에서 설정한 케릭터 셋을 사용하도록 설정
+# RUN echo skip-character-set-client-handshake >> /etc/mysql/conf.d/docker.cnf
+
+# The MariaDB/MySQL tools read configuration files in the following order:
+# 0. "/etc/mysql/my.cnf" symlinks to this file, reason why all the rest is read.
+# 1. "/etc/mysql/mariadb.cnf" (this file) to set global defaults,
+# 2. "/etc/mysql/conf.d/*.cnf" to set global options.
+# 3. "/etc/mysql/mariadb.conf.d/*.cnf" to set MariaDB-only options.
+# 4. "~/.my.cnf" to set user-specific options.
+
+
+# collation 은 정렬시외에도 다음의 경우에도 제공되니 주의깊게 설정해야 합니다.
+
+# 정렬시(ORDER BY)
+# LIKE 검색
+# Index 생성시
+# Primary Key 나 Unique constraint 검사시
+# =, != 등 비교 연산자
+# string 관련 function
+
+
+# utf8mb4_general_ci > utf8mb4_unicode_ci > utf8mb4_900_ai_ci 의 차이점
+
+# utf8mb4_0900_ai_ci의 한글 사용에 대한 문제점 참고 URI
+# https://rastalion.me/mysql-8-0-1-%EB%B2%84%EC%A0%84%EB%B6%80%ED%84%B0-%EC%B1%84%ED%83%9D%EB%90%9C-utf8mb4_0900_ai_ci%EC%9D%98-%ED%95%9C%EA%B8%80-%EC%82%AC%EC%9A%A9%EC%97%90-%EB%8C%80%ED%95%9C-%EB%AC%B8%EC%A0%9C%EC%A0%90/
