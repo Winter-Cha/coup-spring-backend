@@ -14,8 +14,8 @@ COMPOSE_FILES := -f docker-compose.${PROFILE}.yml
 
 up:
 	# 실행된 명령어
-	# docker-compose ${COMPOSE_FILES} up
-	@docker-compose ${COMPOSE_FILES} up
+	# docker-compose ${COMPOSE_FILES} up -d
+	@docker-compose ${COMPOSE_FILES} up -d
 
 down:
 	@docker-compose ${COMPOSE_FILES} down --rmi all
